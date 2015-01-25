@@ -40,6 +40,11 @@
 %
 
 %
+% This is the eplain file after removing ifpdf section.
+%
+\input eplain-cweb
+
+%
 % Defines A4 papersize.
 %
 \pdfpagewidth=210 true mm
@@ -119,10 +124,53 @@ or visit the site \.{http://www.gnu.org/licenses/}.
 
 \def\contentspagenumber{-1} \pageno=\contentspagenumber \advance\pageno by 1
 
+
+
 @* Introduction.
 
-The purpose of \.{sort} is to provide a pool of algorithm for sorting.
+The purpose of \.{SORT} is to provide a pool of algorithms for sorting.
+The functions made available by this program are all in-memory algorithms
+for ``{\sl internal sorting\/}''.
 
+A lot of effort has been devoted to study and research sorting procedures,
+but a silver bullet has still to come.
+Depending on the sorting data distribution, the patterns in the data,
+the type and number of the records, the cost of comparing versus swapping,
+the availability of extra space, and finally our tolerance to the risk
+of unbound running time and memory consumption that might be caused by
+unpredicted data distributions,
+one choice can be more suitable than the others.
+
+The algorithms here proposed are:
+{\sl
+\unorderedlist
+  \li Insertion-sort
+  \li Binary-sort
+  \li Heap-sort
+  \li Smooth-sort
+  \li Quick-sort
+  \li Shell-sort
+  \li Merge-sort
+  \li Tim-sort
+\endunorderedlist
+}
+
+There are mainly three different approaches when we have to rearrange
+records of information in a given order:
+\unorderedlist
+  \li Address table sorting that means moving the complete records around.
+  \li Key-sorting that is carried out by preparing an auxiliary array of references and sort them.
+  \li List sorting that is done organizing auxiliary references into a linked list.
+\endunorderedlist 
+
+The first one is more appealing when the data to be sorted is not too big when compared with the pointer size
+of the machine, on the other side linked lists are very efficient when we have to make an insertion and
+key-sorting shines when two elements has to be swapped.
+
+
+@* The program.
+
+This section has to be completely developed.
 @c
 @<Header files to include@>@/
 @<The main program@>

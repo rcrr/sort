@@ -25,6 +25,12 @@
 
 Sort is a collection of algorithms for sorting data.
 
-The source code is written in ANSI C.
+This work has been prepared using the CWEB System by D. E. Knuth and S. Levy.
+The source CWEB files are translated into the TeX manual and the C source code
+applying the CWEAVE and CTANGLE programs. Give a look to the Makefile if you
+want to see how the process is carryed out.
 
-The program is distributed under the GNU GPLv3 license.
+The maunal is licensed under the terms of the GNU Free Documentation License,
+while the program is distributed under the GNU GPLv3 license.
+
+The code is written conforming to the ANSI C99 standard.

@@ -124,6 +124,9 @@ or visit the site \.{http://www.gnu.org/licenses/}.
 
 \def\contentspagenumber{-1} \pageno=\contentspagenumber \advance\pageno by 1
 
+@s int64_t int
+@s uint64_t int
+
 
 @* Introduction.
 
@@ -166,14 +169,69 @@ records of information in a given order:
   \li List sorting that is done organizing auxiliary references into a linked list.
 \endunorderedlist}
 
-Here we are leaving out the third one, embracing the second one, and limiting the first to the special
-case of constant element's size. Lists do not provide random access, that is mandatory for the
+Here we are leaving out the third one, embracing the second one,
+and limiting the first to the special case of constant element's size.
+Lists do not provide random access, that is mandatory for the
 enumerated algorithms, and so are out of scope for this library.
-Address table sorting is really appealing when there is no distinction between the data that we want
-to sort and the key used for comparison. A straightforward example is sorting raw data types like integers
+Address table sorting is really appealing when there is no distinction
+between the data that we want to sort and the key used for comparison.
+A straightforward example is sorting raw data types like integers
 or doubles.
-Key-sorting on the other side moves around just a fixed length reference, usually a computer
-memory pointer, and uses the data record, also known as object, only for comparison. 
+Key-sorting on the other side moves around just a fixed length reference,
+usually a computer memory pointer, and uses the data record, also known
+as object, only for comparison. 
+
+@* Compare functions.
+
+The most common raw types like |double|, |int|, |int64_t|, and |uint64_t|, are
+provided with prepared---ready to use---compare functions. This choice has been done
+for the convenience of the user, for testing the algorithms, and also because
+the \CEE/ compiler can make a better job in inlining the function
+when it is in the same compilation unit of its client, the sorting algorithm.
+
+@<Compare functions@>=
+@<Compare function for |double| raw type@>
+
+
+
+@ Compare function for |double| raw type.
+
+The function |sort_utils_double_cmp| compares double values pointed by
+|a| and |b|, it returns:
+\smallskip
+\settabs\+ \hfil 10mm & |+1| & when |a| is greater than |b| \cr
+\+ & {\hfill |+1|} & \ when |a| is greater than |b| \cr
+\+ & {\hfill  |0|} & \ when |a| is equal to |b| \cr
+\+ & {\hfill |-1|} & \ when |a| is less then |b| \cr
+
+@<Compare function for |double| raw type@>=
+int
+sort_utils_double_cmp (a, b)
+     const void *const a; /* a pointer to the first double */
+     const void *const b; /* a pointer to the second double */
+{
+  const double *const x = (const double *const) a;
+  const double *const y = (const double *const) b;
+  return (*x > *y) - (*x < *y);
+}
+
+
+
+@ Inverse compare function for |double| row type.
+
+When the aim is to invert the versus ...
+
+@<Compare function for |double| raw type@>+=
+int
+sort_utils_double_icmp (a, b)
+     const void *const a; /* a pointer to the first double */
+     const void *const b; /* a pointer to the second double */
+{
+  const double *const x = (const double *const) a;
+  const double *const y = (const double *const) b;
+  return (*x < *y) - (*x > *y);
+}
+
 
 
 @* The program.

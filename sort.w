@@ -125,12 +125,12 @@ or visit the site \.{http://www.gnu.org/licenses/}.
 \def\contentspagenumber{-1} \pageno=\contentspagenumber \advance\pageno by 1
 
 
-
 @* Introduction.
 
 The purpose of \.{SORT} is to provide a pool of algorithms for sorting.
-The functions made available by this program are all in-memory algorithms
-for ``{\sl internal sorting\/}''.
+The functions made available by this program are all in-memory algorithms,
+this means that the data is never unloaded from the computer's random access
+memory. This practice is generally referred as ``{\sl internal sorting\/}''.
 
 A lot of effort has been devoted to study and research sorting procedures,
 but a silver bullet has still to come.
@@ -141,9 +141,8 @@ of unbound running time and memory consumption that might be caused by
 unpredicted data distributions,
 one choice can be more suitable than the others.
 
-The algorithms here proposed are:
-{\sl
-\unorderedlist
+The algorithms here proposed are all based on ``{\sl element comparison}'':
+{\sl \unorderedlist \leftskip=14mm
   \li Insertion-sort
   \li Binary-sort
   \li Heap-sort
@@ -152,20 +151,29 @@ The algorithms here proposed are:
   \li Shell-sort
   \li Merge-sort
   \li Tim-sort
-\endunorderedlist
-}
+\endunorderedlist}
+
+Depending on how the data to be sorted is organized we have to design the |swap|
+and the |compare| functions. Here we make a simple assunption: The data element is
+identified by a memory pointer, and the size of the element is constant.
+At a first glance this may be perceived as a too strong constraint, but it isn't.
 
 There are mainly three different approaches when we have to rearrange
 records of information in a given order:
-\unorderedlist
+{\unorderedlist \leftskip=14mm
   \li Address table sorting that means moving the complete records around.
   \li Key-sorting that is carried out by preparing an auxiliary array of references and sort them.
   \li List sorting that is done organizing auxiliary references into a linked list.
-\endunorderedlist 
+\endunorderedlist}
 
-The first one is more appealing when the data to be sorted is not too big when compared with the pointer size
-of the machine, on the other side linked lists are very efficient when we have to make an insertion and
-key-sorting shines when two elements has to be swapped.
+Here we are leaving out the third one, embracing the second one, and limiting the first to the special
+case of constant element's size. Lists do not provide random access, that is mandatory for the
+enumerated algorithms, and so are out of scope for this library.
+Address table sorting is really appealing when there is no distinction between the data that we want
+to sort and the key used for comparison. A straightforward example is sorting raw data types like integers
+or doubles.
+Key-sorting on the other side moves around just a fixed length reference, usually a computer
+memory pointer, and uses the data record, also known as object, only for comparison. 
 
 
 @* The program.

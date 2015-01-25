@@ -1,31 +1,43 @@
-@q                                                                             @>
-@q A library of sorting routines written using CWEB by Roberto Corradini       @>
-@q                                                                             @>
-@q sort.w                                                                      @>
-@q                                                                             @>
-@q This file is part of the sort program                                       @>
-@q http://github.com/rcrr/sort                                                 @>
-@q                                                                             @>
-@q Author Roberto Corradini mailto:rob_corradini@@yahoo.it                     @>
-@q Copyright 2015 Roberto Corradini. All rights reserved.                      @>
-@q                                                                             @>
-@q License                                                                     @>
-@q                                                                             @>
-@q This program is free software; you can redistribute it and/or modify it     @>
-@q under the terms of the GNU General Public License as published by the       @>
-@q Free Software Foundation; either version 3, or (at your option) any         @>
-@q later version.                                                              @>
-@q                                                                             @>
-@q This program is distributed in the hope that it will be useful,             @>
-@q but WITHOUT ANY WARRANTY; without even the implied warranty of              @>
-@q MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the                @>
-@q GNU General Public License for more details.                                @>
-@q                                                                             @>
-@q You should have received a copy of the GNU General Public License           @>
-@q along with this program; if not, write to the Free Software                 @>
-@q Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA  @>
-@q or visit the site <http://www.gnu.org/licenses/>.                           @>
-@q                                                                             @>
+%
+% A library of sorting routines written using CWEB by Roberto Corradini
+%
+% sort.w
+%
+% This file is part of the sort program
+% http://github.com/rcrr/sort
+%
+% Author Roberto Corradini mailto:rob_corradini@@yahoo.it
+% Copyright 2015 Roberto Corradini. All rights reserved.
+%
+% This document is at the same time the source code for the program and
+% the typeset manual. It is designed conforming to the CWEB system and
+% has to be processed using cweave and ctangle programs, part of it.
+% With the help of those two both the program and the manual will be generated.
+% It is the intent of the author to license the software under the terms of the
+% GNU GPLv3, and the manual under the terms of GNU Free Documentation License
+% Version 1.3.
+%
+% Software license
+%
+% This program is free software; you can redistribute it and/or modify it
+% under the terms of the GNU General Public License as published by the
+% Free Software Foundation; either version 3, or (at your option) any
+% later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+% GNU General Public License for more details.
+%
+% Manual license
+%
+% Permission is granted to copy, distribute and/or modify this document
+% under the terms of the GNU Free Documentation License, Version 1.3
+% or any later version published by the Free Software Foundation;
+% with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+% A copy of the license is included in the section entitled "GNU
+% Free Documentation License".
+%
 
 %
 % Defines A4 papersize.
@@ -57,13 +69,34 @@
 The printed and electronic form of this manual is copyright \copyright\ 2015
 by Roberto Corradini. All rights reserved.
 
-\bigskip\noindent
+\smallskip\noindent
 This software is copyright \copyright\ 2015
 by Roberto Corradini. All rights reserved.
 
 \bigskip\noindent
 Internet page \.{http://github.com/rcrr/sort}
 contains current info about \.{SORT} and related topics.
+
+\smallskip\noindent
+The author may be contacted by email as \.{rob\_corradini@@yahoo.it}.
+
+\bigskip\noindent
+This printed document is the typeset manual generated from a set of \.{CWEB} source files.
+The source files are first processed with the \.{cweave} program, and the resulting
+\TeX\ files are then typset into this manual.
+The same \.{CWEB} source files are also processed by \.{ctangle}, which prepares the \.{C}
+program.
+It is the intent of the author to license the software under the terms of the
+GNU GPLv3, and the manual under the terms of GNU Free Documentation License
+Version 1.3.
+
+\bigskip\noindent
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License".
 
 \bigskip\noindent
 This program is free software; you can redistribute it and/or modify it under the terms
@@ -83,7 +116,6 @@ if not, write to:
 \+&UNITED STATES\cr
 \smallskip\noindent
 or visit the site \.{http://www.gnu.org/licenses/}.
-
 
 \def\contentspagenumber{-1} \pageno=\contentspagenumber \advance\pageno by 1
 

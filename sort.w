@@ -84,17 +84,17 @@ This software is copyright \copyright\ 2015
 by Roberto Corradini. All rights reserved.
 
 \bigskip\noindent
-Internet page \.{http://github.com/rcrr/sort}
+Internet page \pdfURL{http://github.com/rcrr/sort}{http://github.com/rcrr/sort}
 contains current info about \.{SORT} and related topics.
 
 \smallskip\noindent
-The author may be contacted by email as \.{rob\_corradini@@yahoo.it}.
+The author may be contacted by email as \pdfURL{rob\_corradini@@yahoo.it}{mailto:rob_corradini@@yahoo.it}
 
 \bigskip\noindent
 This printed document is the typeset manual generated from a set of \.{CWEB} source files.
 The source files are first processed with the \.{cweave} program, and the resulting
 \TeX\ files are then typset into this manual.
-The same \.{CWEB} source files are also processed by \.{ctangle}, which prepares the \.{C}
+The same \.{CWEB} source files are also processed by \.{ctangle}, which prepares the \CEE/
 program.
 It is the intent of the author to license the software under the terms of the
 GNU GPLv3, and the manual under the terms of GNU Free Documentation License
@@ -105,8 +105,8 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled "GNU
-Free Documentation License".
+A copy of the license is included in the section entitled ``GNU
+Free Documentation License''.
 
 \bigskip\noindent
 This program is free software; you can redistribute it and/or modify it under the terms
@@ -125,7 +125,7 @@ if not, write to:
 \+&Boston, MA 02111-1307\cr
 \+&UNITED STATES\cr
 \smallskip\noindent
-or visit the site \.{http://www.gnu.org/licenses/}.
+or visit the GNU site at \pdfURL{http://www.gnu.org/licenses/}{http://www.gnu.org/licenses/}
 
 \def\contentspagenumber{-1} \pageno=\contentspagenumber \advance\pageno by 1
 

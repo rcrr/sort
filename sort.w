@@ -196,7 +196,8 @@ when it is in the same compilation unit of its client, the sorting algorithm.
 
 @<Collection of compare functions@>=
 @<Compare functions for |double| raw type@>@/
-@<Compare functions for |int| raw type@>
+@<Compare functions for |int| raw type@>@/
+@<Compare functions for 64 bits integer types@>
 
 
 
@@ -276,6 +277,56 @@ sort_utils_int_icmp (a, b)
   return (*x < *y) - (*x > *y);
 }
 
+
+
+@ Compare functions for |int64_t| and |uint64_t| raw types.
+
+Today computer CPU registers can be 64 bits long, so defining compare
+functions for these types is in line with our times.
+
+The definition of this four functions is following the same conventions
+adopted for the just described ones.
+
+@<Compare functions for 64 bits integer types@>=
+int
+sort_utils_uint64_t_cmp (a, b)
+     const void *const a; /* a pointer to the first |uint64_t| */
+     const void *const b; /* a pointer to the second |uint64_t| */
+{
+  const uint64_t *const x = (const uint64_t *const) a;
+  const uint64_t *const y = (const uint64_t *const) b;
+  return (*x > *y) - (*x < *y);
+}
+
+int
+sort_utils_uint64_t_icmp (a, b)
+     const void *const a; /* a pointer to the first |uint64_t| */
+     const void *const b; /* a pointer to the second |uint64_t| */
+{
+  const uint64_t *const x = (const uint64_t *const) a;
+  const uint64_t *const y = (const uint64_t *const) b;
+  return (*x < *y) - (*x > *y);
+}
+
+int
+sort_utils_int64_t_cmp (a, b)
+     const void *const a; /* a pointer to the first |int64_t| */
+     const void *const b; /* a pointer to the second |int64_t| */
+{
+  const int64_t *const x = (const int64_t *const) a;
+  const int64_t *const y = (const int64_t *const) b;
+  return (*x > *y) - (*x < *y);
+}
+
+int
+sort_utils_int64_t_icmp (a, b)
+     const void *const a; /* a pointer to the first |int64_t| */
+     const void *const b; /* a pointer to the second |int64_t| */
+{
+  const int64_t *const x = (const int64_t *const) a;
+  const int64_t *const y = (const int64_t *const) b;
+  return (*x < *y) - (*x > *y);
+}
 
 
 @* The program.

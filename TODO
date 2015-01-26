@@ -1,0 +1,10 @@
+
+- Add GNU licenses to the manual.
+
+- Add test cases for the compare functions.
+
+- Add header file for sort.
+
+- Modify main with a banner output.
+
+- Organize the function prototypes.

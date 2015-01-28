@@ -1,5 +1,6 @@
 %
-% A library of sorting routines written using CWEB by Roberto Corradini
+% A library of sorting routines written in ANSI C99.
+% This work has been prepared using the CWEB system.
 %
 % sort.w
 %
@@ -10,9 +11,11 @@
 % Copyright 2015 Roberto Corradini. All rights reserved.
 %
 % This document is at the same time the source code for the program and
-% the typeset manual. It is designed conforming to the CWEB system and
-% has to be processed using cweave and ctangle programs, part of it.
-% With the help of those two both the program and the manual will be generated.
+% the typeset manual. It is designed conforming to the CWEB system, by Donald Knuth
+% and Silvio Levy, see the web page at http://www.literateprogramming.com/cweb_download.html.
+% for further details.
+% It has to be processed using CWEAVE and CTANGLE programs, that are part of CWEB.
+% With the help of these two utilities, both the program and the manual are generated.
 % It is the intent of the author to license the software under the terms of the
 % GNU GPLv3, and the manual under the terms of GNU Free Documentation License
 % Version 1.3.

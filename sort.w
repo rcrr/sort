@@ -189,6 +189,96 @@ Key-sorting on the other side moves around just a fixed length reference,
 usually a computer memory pointer, and uses the data record, also known
 as object, only for comparison. 
 
+
+
+@* Function definitions and prototypes.
+
+The standard \CEE/ library defines the |qsort| function as
+
+|void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *));|
+
+This definition introduce also a second function definition, |compar|, as
+
+|int (*compar)(const void *, const void *);|
+
+This couple of functions are the core of the abstraction that we are adopting in order to
+build the \.{SORT} library.
+
+We start preparing the library header file by wrapping it with the standard
+include guards that prevents the body of \.{sort.h} from being read more than once
+in a given compilation.
+Next we define two polimorphic function types, one for comparing and the other for sorting.
+Finally we add all the function prototypes provided by the specific compare
+function and the sort algorithms.
+The header file \.{stdint.h} is included because some specific sorting functions
+are dedicated to raw types defined by it.
+Users of the \.{SORT} library should include the header file \.{sort.h}.
+
+\bigskip\noindent
+The function pointer |sort_utils_compare_function| has two parameters:
+
+\begingroup
+\def\]#1 {\smallskip\hangindent2\parindent \hangafter1 \indent #1 }
+
+\]|a| a pointer to an element.
+
+\]|b| a pointer to a second element.
+
+\endgroup\smallskip\noindent
+
+\bigskip\noindent
+The function pointer |sort_utils_sort_function| has four parameters:
+
+\begingroup
+\def\]#1 {\smallskip\hangindent2\parindent \hangafter1 \indent #1 }
+
+\]|a| a pointer to the first element of the array to be sorted.
+
+\]|count| the number of elements in the |a| array.
+
+\]|element_size| the number of bytes occupied by each element.
+
+\]|cmp| a pointer to the compare function.
+
+\endgroup\smallskip\noindent
+
+
+@(sort.h@>=
+
+@#
+#ifndef SORT_UTILS_H
+#define SORT_UTILS_H
+
+@#
+#include <stdint.h>
+
+@#
+typedef int
+@[@] (*sort_utils_compare_function)
+(
+   const void *const a,
+   const void *const b
+);
+
+@#
+typedef void
+@[@] (*sort_utils_sort_function)
+(
+   void *const a,
+   const size_t count,
+   const size_t element_size,
+   const sort_utils_compare_function cmp
+);
+
+@#
+@<Function prototypes for comparing@>
+
+
+@#
+#endif /* |SORT_UTILS_H| */
+
+
+
 @* Compare functions.
 
 The most common raw types like |double|, |int|, |int64_t|, and |uint64_t|, are
@@ -226,6 +316,14 @@ sort_utils_double_cmp (a, b)
   const double *const y = (const double *const) b;
   return (*x > *y) - (*x < *y);
 }
+
+@ It's prototype is:
+
+@<Function prototypes for comparing@>=
+extern int
+sort_utils_double_cmp (
+ const void *const a,
+ const void *const b);
 
 
 
@@ -345,7 +443,7 @@ This section has to be completely developed.
 @<Header files...@>=
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "sort.h"
 
 @ Now we come to the general layout of the |main| function. 
 

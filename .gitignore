@@ -1,5 +1,6 @@
 sort
 sort.c
+sort.h
 sort.idx
 sort.log
 sort.o

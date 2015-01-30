@@ -317,7 +317,8 @@ sort_utils_double_cmp (a, b)
   return (*x > *y) - (*x < *y);
 }
 
-@ It's prototype is:
+@ The declaration of the prototype for the function |sort_utils_double_cmp| is
+added to the \.{sort.h} header file.
 
 @<Function prototypes for comparing@>=
 extern int
@@ -349,6 +350,15 @@ sort_utils_double_icmp (a, b)
   return (*x < *y) - (*x > *y);
 }
 
+@ The declaration of the prototype for the function |sort_utils_double_icmp| is
+then added to the \.{sort.h} header file.
+
+@<Function prototypes for comparing@>=
+extern int
+sort_utils_double_icmp (
+ const void *const a,
+ const void *const b);
+
 
 
 @ Compare functions for |int| raw type.
@@ -377,6 +387,20 @@ sort_utils_int_icmp (a, b)
   const int *const y = (const int *const) b;
   return (*x < *y) - (*x > *y);
 }
+
+@ The declaration of the prototype for the functions |sort_utils_int_cmp| and
+|sort_utils_int_icmp| are then added to the \.{sort.h} header file.
+
+@<Function prototypes for comparing@>=
+extern int
+sort_utils_int_cmp (
+ const void *const a,
+ const void *const b);
+
+extern int
+sort_utils_int_icmp (
+ const void *const a,
+ const void *const b);
 
 
 
@@ -428,6 +452,31 @@ sort_utils_int64_t_icmp (a, b)
   const int64_t *const y = (const int64_t *const) b;
   return (*x < *y) - (*x > *y);
 }
+
+@ And as we did for the other compare functions---we add the declaration of the prototype
+for them to the \.{sort.h} header file.
+
+@<Function prototypes for comparing@>=
+extern int
+sort_utils_uint64_t_cmp (
+ const void *const a,
+ const void *const b);
+
+extern int
+sort_utils_uint64_t_icmp (
+ const void *const a,
+ const void *const b);
+
+extern int
+sort_utils_int64_t_cmp (
+ const void *const a,
+ const void *const b);
+
+extern int
+sort_utils_int64_t_icmp (
+ const void *const a,
+ const void *const b);
+
 
 
 @* The program.

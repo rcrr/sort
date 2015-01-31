@@ -1,9 +1,11 @@
-sort
 sort.c
+sort.o
 sort.h
+sort_test.c
+sort_test.o
+sort_test
 sort.idx
 sort.log
-sort.o
 sort.pdf
 sort.scn
 sort.tex

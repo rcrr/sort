@@ -502,13 +502,14 @@ main (argc, argv)
      int argc; /* the number of arguments on the \UNIX/ command line */
      char **argv; /* the arguments themselves, an array of strings */
 {
-  @<Interactive short notice@>@\
-  @<Variables local to |main|@>;
+  @<Interactive short notice@>@/
+  @<Variables local to |main|@>@/
   prog_name=argv[0];
   status = 0;
-  @<Print message @>;
+  @<Print message @>@/
   exit(status);
 }
+
 
 
 @ Variables local to main are the return status |status|, and the program name |prog_name|.

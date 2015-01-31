@@ -497,10 +497,12 @@ This section has to be completely developed.
 @ Now we come to the general layout of the |main| function. 
 
 @<The main...@>=
-int main (argc, argv)
-    int argc; /* the number of arguments on the \UNIX/ command line */
-    char **argv; /* the arguments themselves, an array of strings */
+int
+main (argc, argv)
+     int argc; /* the number of arguments on the \UNIX/ command line */
+     char **argv; /* the arguments themselves, an array of strings */
 {
+  @<Interactive short notice@>@\
   @<Variables local to |main|@>;
   prog_name=argv[0];
   status = 0;
@@ -522,6 +524,17 @@ int status; /* Return status */
 printf("%s: hello sort man.\n", prog_name);
 
 
+
+@ Interactive short notice.
+
+@<Interactive short notice@>=
+
+printf("SORT Copyright (C) 2015 Roberto Corradini\n");
+printf("This program comes with ABSOLUTELY NO WARRANTY.\n");
+printf("This is free software, and you are welcome to redistribute it\n");
+printf("under the conditions of the GNU GPL v3 license.\n");
+printf("Consult the associated documentation for details.\n");
+    
 @* Index.
 Here is a cross-reference table for \.{SORT}.
 All sections in which an identifier is used are listed with that identifier,

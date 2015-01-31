@@ -479,50 +479,85 @@ sort_utils_int64_t_icmp (
 
 
 
-@* The program.
+@* The library.
 
 This section has to be completely developed.
 @c
-@<Header files to include@>@/
-@<The main program@>
+@<Header files for the library@>@/
+@<Collection of compare functions@>
 
 
-@ We include header files \.{stdio.h} and \.{stdlib.h}.
 
-@<Header files...@>=
+@* The testing framework.
+
+Describe the framework.
+
+
+
+@ The program for testing.
+
+@(sort_test.c@>=
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "sort.h"
+
+@#
+typedef int
+@[@] (*tst_simple_test_f) (void);
+
+@#
+typedef int
+@[@] (*tst_advanced_test_f)
+(
+  const void *const data,
+  const void *const fixture
+);
+
+@#
+typedef struct {
+  uint64_t blacks;   /* the set of squares occupied by blank discs */
+  uint64_t whites;   /* the set of squares occupied by white discs */
+} Test;
+
+@#
+
+void
+tst_add_simple_test(label, test)
+   const char *const label; /* test label */
+   const tst_simple_test_f test; /* test function */
+{
+   ;
+}
+
+
+@<Test cases@>@/
+@<The test main program@>
+
+
+
+@ We include header files \.{stdio.h}, \.{stdlib.h}, and \.{assert.h}.
+
+@<Header files for the library@>=
+#include <stdio.h>
+#include "sort.h"
+
+
 
 @ Now we come to the general layout of the |main| function. 
 
-@<The main...@>=
+@<The test main...@>=
 int
 main (argc, argv)
      int argc; /* the number of arguments on the \UNIX/ command line */
      char **argv; /* the arguments themselves, an array of strings */
 {
-  @<Interactive short notice@>@/
-  @<Variables local to |main|@>@/
-  prog_name=argv[0];
-  status = 0;
-  @<Print message @>@/
+  @<Interactive short notice@>;
+  int status = 0;
+  sort_utils_double_compare_test();
   exit(status);
 }
-
-
-
-@ Variables local to main are the return status |status|, and the program name |prog_name|.
-
-@<Variables local to |main|@>=
-const char *prog_name; /* Program name */
-int status; /* Return status */
-
-@ Prints the program message.
-
-@<Print message@>=
-
-printf("%s: hello sort man.\n", prog_name);
 
 
 
@@ -535,7 +570,39 @@ printf("This program comes with ABSOLUTELY NO WARRANTY.\n");
 printf("This is free software, and you are welcome to redistribute it\n");
 printf("under the conditions of the GNU GPL v3 license.\n");
 printf("Consult the associated documentation for details.\n");
-    
+
+
+
+@* Test cases.
+
+Following we have the test functions.
+
+@<Test cases@>=
+
+static void
+sort_utils_double_compare_test (void)
+{
+  {
+    const double a = 2.;
+    const double b = 3.;
+    assert(sort_utils_double_cmp(&a, &b) == -1);
+    assert(sort_utils_double_icmp(&a, &b) == +1);
+  }
+  {
+    const double a = 3.;
+    const double b = 3.;
+    assert(sort_utils_double_cmp(&a, &b) == 0);
+    assert(sort_utils_double_icmp(&a, &b) == 0);
+  }
+  {
+  const double a = 3.;
+  const double b = 2.;
+  assert(sort_utils_double_cmp(&a, &b) == +1);
+  assert(sort_utils_double_icmp(&a, &b) == -1);
+  }
+}
+
+
 @* Index.
 Here is a cross-reference table for \.{SORT}.
 All sections in which an identifier is used are listed with that identifier,

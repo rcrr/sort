@@ -24,16 +24,19 @@
 
 
 
-all: sort sort.pdf
+all: sort_test sort.pdf
 
-sort.c: sort.w Makefile
+sort.c sort_test.c: sort.w Makefile
 	ctangle sort
 
 sort.o: sort.c
 	gcc -std=c99 -pedantic-errors -Wall -g -O3 -c sort.c -o sort.o
 
-sort: sort.o
-	gcc sort.o -o sort
+sort_test.o: sort_test.c
+	gcc -std=c99 -pedantic-errors -Wall -g -O3 -c sort_test.c -o sort_test.o
+
+sort_test: sort_test.o sort.o
+	gcc sort_test.o sort.o -o sort_test
 
 sort.tex: sort.w Makefile
 	cweave sort
@@ -42,4 +45,4 @@ sort.pdf: sort.tex
 	pdftex sort
 
 clean:
-	rm -f sort.c sort.o sort sort.tex sort.pdf sort.idx sort.toc sort.log sort.scn
+	rm -f sort.c sort_test.c sort.h sort.o sort_test.o sort_test sort.tex sort.pdf sort.idx sort.toc sort.log sort.scn
